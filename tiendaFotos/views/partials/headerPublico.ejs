@@ -1,0 +1,60 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+        <img src="/images/camara.png" alt="" width="30" height="24" class="d-inline-block align-text-top">
+        Tienda de fotos
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/top-vendidas">Top ten</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" aria-current="page" href="/acerca-de">Acerca de</a>
+          </li>
+      <% if(session && session.cliente) {%> 
+        <li class="nav-item my-auto">
+          <span class="px-2 text-black"><%=session.cliente.nombre%></span>
+        </li>   
+          <li class="nav-item">
+            <a class="btn btn-primary mx-2" href="/carro-de-compra"><i class="fas fa-cart-plus"></i><span class="badge"><%=(session.carroCompra) ? session.carroCompra.length : 0%></span></a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-success mx-2" href="/mis-ordenes">Mis órdenes</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-dark mx-2" href="/lista-deseo"><i class="fas fa-list-ul"> Lista de deseo</i></a>
+          </li>
+          <li class="nav-item">
+              <a class="btn btn-active mx-2" href="/cerrar-sesion">Cerrar Sesión</a>
+          </li>
+          <% } else if(session && session.admin) { %>
+            <li class="nav-item">
+              <a class="btn btn-info mx-2" href="/admin/administradores">Administradores</a>
+          </li>
+            <li class="nav-item">
+              <a class="btn btn-success mx-2" href="/admin/clientes">Clientes</a>
+          </li>
+          <li class="nav-item">
+            <a class="btn btn-success float-rigth" href="/admin/dashboard">Dashboard</a>
+        </li>
+            <li class="nav-item">
+              <a class="btn btn-warning mx-2" href="/admin/cerrar-sesion">Cerrar Sesión</a>
+          </li>
+          
+          <% } else { %>
+          <li class="nav-item">
+            <a class="nav-link" href="/registro">Registro</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/inicio-sesion">Iniciar sesión</a>
+          </li>
+          <% } %>
+          
+        </ul>
+      </div>
+    </div>
+  </nav>

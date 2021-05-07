@@ -1,0 +1,27 @@
+<div class="text-center"><div class="h2">Dashboard</div></div>
+<div class="container" style="width:30%"">
+    <canvas id="myChart" width="80vw" height="40hv"></canvas>
+</div>
+<script>
+    let ctx = document.getElementById('myChart').getContext("2d")
+    let myChart = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Clientes', 'Fotos', 'Ordenes', 'Administradores'],
+            datasets: [{
+                label: 'Cantidades',
+                data: [<%= final.clientes.cantidad %>, <%= final.fotos.cantidadFoto%>, <%= final.ordenes.cantidadOrden%>, <%= final.admin.cantidadAdmin%>],
+                backgroundColor: [
+      'rgb(255, 99, 132)',
+      'rgb(54, 162, 235)',
+      'rgb(255, 205, 86)',
+      'rgb(255, 147, 51)'
+    ],
+            }]
+        }
+    })
+
+
+</script>
+
+

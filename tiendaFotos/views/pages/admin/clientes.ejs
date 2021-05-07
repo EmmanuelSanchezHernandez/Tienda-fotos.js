@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="row">
+      <div class="col-md-12">
+        <% flash.get('mensaje').forEach(function (msg) { %>
+        <div class="alert alert-success text-center" role="alert">
+          <%=msg%>
+        </div>
+        <% }) %>
+    
+        <h2>Clientes</h2>
+    
+        <table class="table table-image">
+          <thead>
+            <tr>
+              <th scope="col">Id</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Acción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% clientes.forEach( cliente => { %>
+            <tr>
+              <td><%=cliente.id%></td>
+              <td><a class="text-info" href="/admin/ordenes-cliente/<%= cliente.id%>"><%= cliente.nombre %></a></td>
+              <% if (cliente.activo){ %>
+               <td><a class="btn btn-primary" href="/admin/desactivar-cliente/<%= cliente.id%>" role="button">Desactivar</a> </td>
+              <% } else { %>
+              <td><a class="btn btn-primary" href="/admin/activar-cliente/<%= cliente.id%>" role="button">Activar</a></td></td> 
+             <% } %>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  

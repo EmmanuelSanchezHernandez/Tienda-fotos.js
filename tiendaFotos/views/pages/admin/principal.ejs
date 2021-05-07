@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row">
+        <% flash.get('mensaje').forEach(function (msg) { %>
+            <div class="alert alert-success" role="alert">
+              <%=msg%>
+            </div>
+            <% }) %>
+        <h2>Admin principal</h2>
+        <table class="table">
+            <thead>
+              <tr>
+                <th>Id</th>
+                <th>Titulo</th>
+                <th>Foto</th>
+                <th>Acción</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% fotos.forEach( foto => { %>
+                <tr>
+                  <td><%=foto.id%></td>
+                  <td><%=foto.titulo%></td>
+                  <td class="w-25"><img src="/images/fotos/<%=foto.contenido%>" alt="" class="img-fluid img-thumbnail"></td>
+                  <td>
+                      <% if (foto.activa){ %>
+                        <a class="btn btn-primary" href="/admin/desactivar-foto/<%= foto.id%>" role="button">Desactivar</a>
+                      <% } else { %>
+                      <a class="btn btn-primary" href="/admin/activar-foto/<%= foto.id%>" role="button">Activar</a></td>
+                     <% } %>
+                    </tr>
+              <% }) %>
+            </tbody>
+          </table>
+      
+          <a href="/admin/agregar-foto" class="btn btn-primary">Agregar Foto</a>
+      
+    </div>
+</div>

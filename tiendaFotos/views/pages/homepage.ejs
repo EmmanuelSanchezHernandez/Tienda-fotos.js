@@ -1,0 +1,34 @@
+<section id="galeria" class="container">
+  <div class="text-center pt-5">
+    <h1>Galeria</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste, recusandae? Porro itaque eius sit! Dolores laborum fugit quibusdam explicabo corporis eveniet soluta ad inventore neque possimus architecto, provident et atque.</p>
+  </div>
+  <% flash.get('mensaje').forEach(function (msg) { %>
+    <div class="alert alert-danger" role="alert">
+      <%=msg%>
+    </div>
+    <% }) %>
+
+    <div class="row">
+      <% fotos.forEach( foto => { %>
+      <div class="col-md-3 my-2">
+        <div class="card">
+          <h5 class="card-header bg-info text-white">
+            <%=foto.titulo%>
+          </h5>
+          <div class="card-body">
+            <p class="card-text">
+              <img src="images/fotos/<%=foto.contenido%>" alt="" class="w-100">
+            </p>
+          </div>
+          <% if (session && session.cliente) {%>`
+            <div class="card-footer text-center">
+              <a href="/agregar-carro-compra/<%=foto.id%>"><i class="fas fa-cart-plus px-3"></i></a>
+              <a href="/agregar-lista-deseo/<%=foto.id%>"><i class="fas fa-list-ul px-3"></i></a>
+            </div>
+            <% } %>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+</section>

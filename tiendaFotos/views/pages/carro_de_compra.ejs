@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <a href="/comprar" class="btn btn-primary">Comprar</a>
+      </div>
+    </div>
+  </div>
+<div class="row">
+    <div class="col-md-12">
+      <% flash.get('mensaje').forEach(function (msg) { %>
+      <div class="alert alert-info text-center" role="alert">
+        <%=msg%>
+      </div>
+      <% }) %>
+  
+      <h2>Carro de Compra</h2>
+  
+      <table class="table table-image">
+        <thead>
+          <tr>
+            <th scope="col">Titulo</th>
+            <th scope="col">Foto</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% elementos.forEach( elemento => { %>
+          <tr>
+            <td><%=elemento.foto.titulo%></td>
+            <td class="w-25" class="text-center"><img src="images/fotos/<%=elemento.foto.contenido%>" alt="" class="img-fluid img-thumbnail"><a class="btn btn-dark mx-2"  href="/eliminar-carro-compra/<%=elemento.foto.id%>">Eliminar</a></td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
